@@ -1,0 +1,40 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    text-align: center;
+    font-family: sans-serif;
+    font-size: 2rem;
+    background-color: #9bffc3;
+}
+
+h1, div{
+    margin: 3rem;
+}
+
+section {
+    width: 75%;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+section p {
+    flex-basis: 40%;
+    padding: 1rem;
+    margin: 1rem;
+    border-radius: 1rem;
+    border : 1px solid black;
+    background-color: #fff;
+}
+
+section p:hover {
+    background-color: #64f59e;
+    box-shadow: #4a4a4a 2px 2px 2px 5px;
+}
+
