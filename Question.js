@@ -1,8 +1,7 @@
-[
+let question = [
   {
   "title" : "Matrix",
-  "link" : "url:('')",
-  "storyTime" :  "",
+  "link" : "url:('img/fightScene.png')",
   "citation" :
     [
       "On est pas le meilleur quand on le croit mais quand on le sait.",
@@ -27,7 +26,6 @@
     ]
   },
   {
-
     "title":"Star wars VII",
     "link": "url:('')",
     "citation":
