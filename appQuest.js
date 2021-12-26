@@ -20,5 +20,4 @@ if(i < quest.length){
     // i++;
 }
 
-
 // todo choice 3 wrong answer or get 3 random
