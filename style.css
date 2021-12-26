@@ -12,29 +12,44 @@ body {
     background-color: #9bffc3;
 }
 
+h1 {
+    text-shadow: 5px 5px 5px #00000080;
+}
+
 h1, div{
     margin: 3rem;
 }
 
-section {
-    width: 75%;
-    margin: auto;
+section, section p {
     display: flex;
+}
+
+section {
+    margin: auto;
     flex-wrap: wrap;
     justify-content: center;
 }
 
 section p {
+    height: 20vh;
     flex-basis: 40%;
     padding: 1rem;
-    margin: 1rem;
-    border-radius: 1rem;
-    border : 1px solid black;
-    background-color: #fff;
+    border : 1px solid #000;
+    justify-content: center;
+    align-items: center;
 }
 
 section p:hover {
-    background-color: #64f59e;
-    box-shadow: #4a4a4a 2px 2px 2px 5px;
+    box-shadow: inset #00000080 0 0 10px 5px;
+}
+
+@media screen and (max-width: 600px) {
+    section {
+        width: 100%;
+    }
+
+    section p {
+        flex-basis: 80%;
+    }
 }
 
