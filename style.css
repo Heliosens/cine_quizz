@@ -8,7 +8,7 @@ body {
     width: 100%;
     text-align: center;
     font-family: sans-serif;
-    font-size: 2rem;
+    font-size: 1.5rem;
     background-color: #9bffc3;
 }
 
@@ -16,7 +16,7 @@ h1 {
     text-shadow: 5px 5px 5px #00000080;
 }
 
-h1, div{
+header, div{
     margin: 3rem;
 }
 
@@ -37,6 +37,7 @@ section p {
     border : 1px solid #000;
     justify-content: center;
     align-items: center;
+    font-weight: bold;
 }
 
 section p:hover {
