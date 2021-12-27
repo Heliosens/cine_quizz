@@ -1,23 +1,46 @@
-console.log($(question)[0].title);
+// get element
 let quest = $(question);
 let quote = $('div');
-let answer = $('section');
+let answer = $('section p');
 
-console.log(quest);
-quote.append('<p>' + quest[0].citation[0] + '</p>');
+// create score
+let score = 0;
 
-let i =0;
-if(i < quest.length){
-    let arr = [];
-    let newQ = quest.splice(i, 1);
-    console.log(quest);
-    console.log(newQ);
-    // for(let i = 0 ; i < 4 ; i++){
-    //     arr.push(Math.floor(Math.random() * quest.length));
-    //     answer.append('<p>' + quest[arr[i]].title + '</p>');
-    //     console.log(arr);
-    // }
-    // i++;
+// console.log(quest[0].title);
+console.log(answer);
+
+
+
+let nbr = 0;
+if(nbr < 10){ // total 10 question
+
+    // listen user answer
+    answer.click(function (){
+        let item = displayQuest();
+        if($(this).text() === item[0].title){
+            score++;
+            console.log('yes ' + score);
+        }
+        nbr++;
+    })
+
 }
 
-// todo choice 3 wrong answer or get 3 random
+function displayQuest (){
+    // display quote
+    quote.append(
+        '<span>Citation ' + nbr + ' /10</span>' +
+        '<p> "' + quest[nbr].citation + '"</p>'
+    );
+    // get current Question
+    let current = quest.splice(nbr, 1);
+    // select 4 wrong answer
+    answer.each(function (){
+        let r = Math.floor(Math.random() * quest.length);
+        $(this).text(quest[r].title);
+        quest.splice(r, 1);
+    })
+    // replace one by the right answer
+    answer.eq(Math.floor(Math.random() * answer.length)).text(current[0].title)
+    return current;
+}
