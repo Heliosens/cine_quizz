@@ -70,7 +70,8 @@ let question = [
   {
     "title": "Usual suspect",
     "link": "url:('')",
-    "citation": "Le coup le plus rusé que le diable ait jamais réussi, ça a été de faire à tout le monde qu'il n'existe pas"
+    "citation": "Le coup le plus rusé que le diable ait jamais réussi, " +
+        "ça a été de faire croire à tout le monde qu'il n'existe pas"
   },
   {
     "title": "Spiderman",
