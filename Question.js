@@ -24,7 +24,6 @@ let question = [
   {
     "title": "Le cinquième élèment",
     "citation": "Aziz lumière !"
-
   },
   {
     "title": "Point break",
@@ -47,8 +46,8 @@ let question = [
     "citation": "Bienvenue à la fête camarade !"
   },
   {
-  "title" : "Matrix",
-  "citation" : "Pourquoi j'ai pas pris la pillule bleue ?"
+    "title" : "Matrix",
+    "citation" : "Pourquoi j'ai pas pris la pillule bleue ?"
   },
   {
     "title": "Le cercle des poètes disparus",
@@ -94,5 +93,13 @@ let question = [
   {
     "title": "Piège en haute mer",
     "citation": "L'endroit le plus sûr sur ce bateau, c'est derrière vous"
+  },
+  {
+    "title": "Le père Noël est une ordure",
+    "citation": "Zezette épouse x"
   }
+  // {
+  //   "title": "",
+  //   "citation": ""
+  // }
 ]

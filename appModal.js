@@ -65,7 +65,6 @@ function ModalWindow (target, screenColor, w, h, boxColor, border){
 
         // create inner box id='innerBox'
         let div = document.createElement('div');
-        div.style.textAlign = "center";
         div.id = "innerBox";
         theBox.appendChild(div);
 

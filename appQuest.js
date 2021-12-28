@@ -5,7 +5,6 @@ let quote = $('#quote');
 let answer = $('section p');
 let quoteNbr = $('#quoteNbr');
 
-
 // create arr
 let arr = [];
 
@@ -28,7 +27,7 @@ clap.click(function (event){
     // listen user answer
     answer.click(function (){
 
-        if(nbr < 4){ // total 10 question
+        if(nbr < 9){ // total 10 question
             // test if it's the right answer
             testAnswer($(this), item);
             nbr++;
@@ -37,18 +36,17 @@ clap.click(function (event){
         else {  // last question
             testAnswer($(this), item);
 
-            let final = new ModalWindow(main.get(0), '', '80%', '80vh', '#fff', '1px solid black')
+            let final = new ModalWindow(main.get(0), '', '80%', '80vh', '#fff176', '1px solid black')
             final.screen();
-            final.box("Votre score est de " + score + " points", "");
+            final.box("Votre score est de " + score + " points", "Il fallait trouver :");
             let innerModal = $('#innerBox');
-            console.log(wrong.length);
+
             if(wrong.length > 0){
-                innerModal.append("<p>Il fallait trouver :</p>")
+                innerModal.append('<div></div>')
                 // display right answer
                 for(let item of wrong){
-                    console.log('ici')
-                    innerModal.append(
-                        '<p>' + item.citation + ' : ' + item.title + '</p>'
+                    innerModal.$('div').append(
+                        '<span><b>"' + item.citation + '"</b> ' + item.title + '</span>'
                     );
                 }
             }
@@ -59,8 +57,6 @@ clap.click(function (event){
             final.closeBtn('Restart', '1.2rem');
             // restart
             $('#btnFrameId').click(()=>{
-                // location.reload();
-
                 // start value
                 nbr = 0;
                 score = 0;
@@ -94,7 +90,7 @@ function displayQuest (){
     // select 4 wrong answer
     answer.each(function (){
         let r = Math.floor(Math.random() * arr.length);
-        $(this).text(question[r].title);
+        $(this).text(question[arr[r]].title);
         arr.splice(r, 1);
     });
 
@@ -126,4 +122,5 @@ function createArr (){
     for(let i = 0 ; i < question.length ; i++){
         arr.push(i);
     }
+
 }
