@@ -1,100 +1,129 @@
 // get element
-let quote = $('div');
-let answer = $('section p');
+let clap = $('a');
 let main = $('main');
+let quote = $('#quote');
+let answer = $('section p');
 let quoteNbr = $('#quoteNbr');
 
-// keep 10 questions
-keep10();
 
+// create arr
+let arr = [];
+
+// start value
 let nbr = 0;
 let score = 0;
-quoteNbr.first().text(nbr + 1);
+let wrong = [];
 
-start();
+// start game
+clap.click(function (event){
+    event.preventDefault();
 
-/**
- * start game
- */
-function start(){
-    // create score
+    clap.slideToggle(1000);
+    main.slideToggle(2000);
 
+    nbr = 0;
+
+    // start
     let item = displayQuest();
-
     // listen user answer
     answer.click(function (){
 
-        if(nbr < 9){ // total 10 question
+        if(nbr < 4){ // total 10 question
             // test if it's the right answer
-            if($(this).text() === item[0].title){
-                score++;
-                console.log(score);
-            }
-            else {
-                console.log('no');
-            }
+            testAnswer($(this), item);
             nbr++;
-            quoteNbr.first().text(nbr + 1);
             item = displayQuest();
         }
-        else {
-            if($(this).text() === item[0].title){
-                score++;
-                console.log(score);
-            }
-            else {
-                console.log('end');
-            }
-            // last question
-            let final = new ModalWindow(main.get(0), '#9bffc3', '80%', '80vh', '#ffffff80', '1px solid black')
+        else {  // last question
+            testAnswer($(this), item);
+
+            let final = new ModalWindow(main.get(0), '', '80%', '80vh', '#fff', '1px solid black')
             final.screen();
-            final.box("Votre score", score + " points");
-            // $('#innerBox').text(score);
+            final.box("Votre score est de " + score + " points", "");
+            let innerModal = $('#innerBox');
+            console.log(wrong.length);
+            if(wrong.length > 0){
+                innerModal.append("<p>Il fallait trouver :</p>")
+                // display right answer
+                for(let item of wrong){
+                    console.log('ici')
+                    innerModal.append(
+                        '<p>' + item.citation + ' : ' + item.title + '</p>'
+                    );
+                }
+            }
+            else{
+                innerModal.append("<p>Bravo !!!</p>")
+            }
+
             final.closeBtn('Restart', '1.2rem');
             // restart
             $('#btnFrameId').click(()=>{
+                // location.reload();
+
+                // start value
                 nbr = 0;
                 score = 0;
+                wrong = [];
                 quoteNbr.first().text(nbr + 1);
-                start();
             });
         }
     })
-}
+})
 
 /**
- * stock question
+ * stock current question
  * display answers
  * @returns current question
  */
 function displayQuest (){
-    let quest = $(question);
+    // get number
+    createArr();
+
+    // display nbr
+    quoteNbr.first().text(nbr + 1);
+
     // display quote
     quote.html(
-        '<p> "' + quest[nbr].citation + '"</p>'
+        '<p> "' + question[nbr].citation + '"</p>'
     );
-    // get current Question
-    let current = quest.splice(nbr, 1);
+
+    // suppr number of current Question
+    arr.splice(nbr, 1);
+
     // select 4 wrong answer
     answer.each(function (){
-        let r = Math.floor(Math.random() * quest.length);
-        $(this).text(quest[r].title);
-        quest.splice(r, 1);
-    })
+        let r = Math.floor(Math.random() * arr.length);
+        $(this).text(question[r].title);
+        arr.splice(r, 1);
+    });
+
     // replace one by the right answer
-    answer.eq(Math.floor(Math.random() * answer.length)).text(current[0].title)
-    return current;
+    answer.eq(Math.floor(Math.random() * answer.length)).text(question[nbr].title);
+
+    return question[nbr];
 }
 
 /**
- * keep 10 questions
+ *
+ * @param userAns
+ * @param right
  */
-function keep10(){
-    if(question.length > 10){
-        // select nbr in arr.length
-        let select = Math.floor(Math.random() * question.length);
-        question.splice(select, 1);
-        keep10();
+function testAnswer (userAns, right) {
+    if(userAns.text() === right.title){
+        score++;
+    }
+    else {
+        wrong.push(right);
     }
 }
 
+/**
+ * create array length of question length
+ */
+function createArr (){
+    arr = [];
+    for(let i = 0 ; i < question.length ; i++){
+        arr.push(i);
+    }
+}
