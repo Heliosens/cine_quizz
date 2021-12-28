@@ -96,7 +96,7 @@ let question = [
   {
     "title": "Kaamelott",
     "link": "url:('')",
-    "citation": "C'est pas faut !"
+    "citation": "C'est pas faux !"
   },
   {
     "title": "Dirty dancing",

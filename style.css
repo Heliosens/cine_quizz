@@ -9,15 +9,26 @@ body {
     text-align: center;
     font-family: sans-serif;
     font-size: 1.5rem;
-    background-color: #9bffc3;
+    background-color: #ffe69b;
 }
 
 h1 {
     text-shadow: 5px 5px 5px #00000080;
 }
 
-header, div{
-    margin: 3rem;
+#theBox h1 {
+    font-size: 2rem;
+}
+
+header, #quote{
+    margin: 1rem;
+}
+
+#quote {
+    height: 20vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 section, section p {
@@ -41,7 +52,7 @@ section p {
 }
 
 section p:hover {
-    box-shadow: inset #00000080 0 0 10px 5px;
+    box-shadow: inset #ffff0040 0 0 10px 5px;
 }
 
 @media screen and (max-width: 600px) {
