@@ -81,7 +81,7 @@ section p:hover {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    background: #ffffff80;
+    /*background: #ffffff80;*/
 }
 
 #innerBox span {

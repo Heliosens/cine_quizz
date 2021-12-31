@@ -36,13 +36,12 @@ clap.click(function (event){
         else {  // last question
             testAnswer($(this), item);
 
-            let final = new ModalWindow(main.get(0), '', '80%', '80vh', '#fff176', '1px solid black')
+            let final = new ModalWindow(main.get(0), '', '80%', '80vh', '#fff17680', '1px solid black')
             final.screen();
             final.box("Votre score est de " + score + " points", "Il fallait trouver :");
             let innerModal = $('#innerBox');
 
             if(wrong.length > 0){
-                innerModal.append('<div></div>')
                 // display right answer
                 for(let item of wrong){
                     innerModal.$('div').append(
@@ -106,12 +105,7 @@ function displayQuest (){
  * @param right
  */
 function testAnswer (userAns, right) {
-    if(userAns.text() === right.title){
-        score++;
-    }
-    else {
-        wrong.push(right);
-    }
+    userAns.text() === right.title ? score++ : wrong.push(right);
 }
 
 /**
@@ -122,5 +116,4 @@ function createArr (){
     for(let i = 0 ; i < question.length ; i++){
         arr.push(i);
     }
-
 }
