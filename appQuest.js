@@ -109,13 +109,7 @@ function displayQuest (){
  * @param right
  */
 function testAnswer (userAns, right) {
-    if(userAns.text() === right.title){
-        score++;
-    }
-    else {
-        wrong.push(right);
-    }
-    // userAns.text() === right.title ? score++ : wrong.push(right);
+    userAns.text() === right.title ? score++ : wrong.push(right);
 }
 
 /**
