@@ -14,6 +14,7 @@ let selectIdx = [];
 let nbr = 0;
 let score = 0;
 let wrong = [];
+let item = '';
 
 createArr(selectIdx, question.length);
 
@@ -44,11 +45,13 @@ clap.click(function (event){
         else {  // last question
             testAnswer($(this), item);
 
+            // create final screen
             let final = new ModalWindow(main.get(0), '', '80%', '80vh', '#fff176', '1px solid black')
             final.screen();
             final.box("Votre score est de " + score + " points");
             let innerModal = $('#innerBox');
 
+            // adapt screen on result
             if(wrong.length > 0){
                 // display right answer
                 innerModal.append("<p>Il fallait trouver :</p>")
@@ -64,9 +67,8 @@ clap.click(function (event){
 
             final.closeBtn('Restart', '1.5rem');
             $('#btnFrameId').click(()=>{
-                innerModal.remove();
-                // invoke function
-                startQuizz();
+                // restart
+                location.reload();
             });
         }
     })
@@ -89,16 +91,20 @@ function select (){
  * start
  */
 function startQuizz () {
+
     // create arr
     arr = [];
+    selectQuest = [];
+    selectIdx = [];
 
     // start value
     nbr = 0;
     score = 0;
     wrong = [];
+    item = '';
 
+    createArr(selectIdx, question.length);
     select();
-
 }
 
 /**
@@ -109,14 +115,12 @@ function startQuizz () {
 function displayQuest (){
     // get number
     arr = selectIdx.map(x => x);
-    console.log(arr);
+
     // display nbr
     quoteNbr.first().text(nbr + 1);
 
     // display quote
-    quote.html(
-        '<p> "' + selectQuest[nbr].citation + '"</p>'
-    );
+    quote.html('<p> "' + selectQuest[nbr].citation + '"</p>');
 
     // suppr number of current Question
     arr.splice(nbr, 1);
@@ -124,7 +128,6 @@ function displayQuest (){
     // select 4 wrong answer
     answer.each(function (){
         let r = Math.floor(Math.random() * arr.length);
-        console.log(question[arr[r]])
         $(this).text(question[arr[r]].title);
         arr.splice(r, 1);
     });
@@ -152,3 +155,4 @@ function createArr (name, length){
         name.push(i);
     }
 }
+
