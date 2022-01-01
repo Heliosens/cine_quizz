@@ -14,7 +14,6 @@ let selectIdx = [];
 let nbr = 0;
 let score = 0;
 let wrong = [];
-let item = '';
 
 createArr(selectIdx, question.length);
 

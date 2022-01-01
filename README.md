@@ -4,17 +4,16 @@ get element
 
 create score = 0;
 
-display first question (nbr = 0 to 9 = 10 questions)
+select 10 question
+
+display first question
 
 listen answer
 
-count score
-
+count score or stock wrong
 next question
 
 to the last nbr = 10
-invoke modal window
 
-restart =>  score = 0
-            nbr = 0
-            
+invoke modal window
+display score and right answer
