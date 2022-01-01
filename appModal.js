@@ -86,7 +86,6 @@ function ModalWindow (target, screenColor, w, h, boxColor, border){
         btn.style.padding = ".5rem 1rem";
         btn.innerHTML = btnText;
         btn.id = "btnFrameId";
-        btn.type = "submit";
         btn.name = "inputInBox";
 
         // get element to close

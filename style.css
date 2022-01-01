@@ -12,15 +12,18 @@ body {
     background-color: #fff176;
 }
 
-a {
-    text-decoration-line: none;
-    color: black;
+#firstScreen {
     width: 100%;
     height: 50vh;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
+}
+
+a {
+    text-decoration-line: none;
+    color: black;
 }
 
 a img {

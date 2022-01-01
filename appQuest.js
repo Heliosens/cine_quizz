@@ -7,13 +7,18 @@ let quoteNbr = $('#quoteNbr');
 
 // create arr
 let arr = [];
+let selectQuest = [];
+let selectIdx = [];
 
 // start value
 let nbr = 0;
 let score = 0;
 let wrong = [];
 
-// start game
+createArr(selectIdx, question.length);
+
+select();
+
 /**
  *
  */
@@ -23,9 +28,9 @@ clap.click(function (event){
     clap.slideToggle(1000);
     main.slideToggle(2000);
 
-    nbr = 0;
-
     // start
+    startQuizz();
+
     let item = displayQuest();
     // listen user answer
     answer.click(function (){
@@ -57,18 +62,44 @@ clap.click(function (event){
                 innerModal.append("<p>Bravo !!!</p>")
             }
 
-            final.closeBtn('Restart', '1.2rem');
-            // restart
+            final.closeBtn('Restart', '1.5rem');
             $('#btnFrameId').click(()=>{
-                // start value
-                nbr = 0;
-                score = 0;
-                wrong = [];
-                quoteNbr.first().text(nbr + 1);
+                innerModal.remove();
+                // invoke function
+                startQuizz();
             });
         }
     })
 })
+
+/**
+ * get 10 question in selectQuest[];
+ */
+function select (){
+    if(selectQuest.length < 10){
+        let s = Math.floor(Math.random() * selectIdx.length);
+        let quest = question[selectIdx[s]]
+        selectQuest.push(quest);
+        selectIdx.splice(s, 1);
+        select();
+    }
+}
+
+/**
+ * start
+ */
+function startQuizz () {
+    // create arr
+    arr = [];
+
+    // start value
+    nbr = 0;
+    score = 0;
+    wrong = [];
+
+    select();
+
+}
 
 /**
  * stock current question
@@ -77,14 +108,14 @@ clap.click(function (event){
  */
 function displayQuest (){
     // get number
-    createArr();
-
+    arr = selectIdx.map(x => x);
+    console.log(arr);
     // display nbr
     quoteNbr.first().text(nbr + 1);
 
     // display quote
     quote.html(
-        '<p> "' + question[nbr].citation + '"</p>'
+        '<p> "' + selectQuest[nbr].citation + '"</p>'
     );
 
     // suppr number of current Question
@@ -93,14 +124,15 @@ function displayQuest (){
     // select 4 wrong answer
     answer.each(function (){
         let r = Math.floor(Math.random() * arr.length);
+        console.log(question[arr[r]])
         $(this).text(question[arr[r]].title);
         arr.splice(r, 1);
     });
 
     // replace one by the right answer
-    answer.eq(Math.floor(Math.random() * answer.length)).text(question[nbr].title);
+    answer.eq(Math.floor(Math.random() * answer.length)).text(selectQuest[nbr].title);
 
-    return question[nbr];
+    return selectQuest[nbr];
 }
 
 /**
@@ -115,9 +147,8 @@ function testAnswer (userAns, right) {
 /**
  * create array length of question length
  */
-function createArr (){
-    arr = [];
-    for(let i = 0 ; i < question.length ; i++){
-        arr.push(i);
+function createArr (name, length){
+    for(let i = 0 ; i < length ; i++){
+        name.push(i);
     }
 }
