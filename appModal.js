@@ -40,7 +40,7 @@ function ModalWindow (target, screenColor, w, h, boxColor, border){
      * @param title
      * @param text
      */
-    this.box = function (title = "", text =""){
+    this.box = function (title = ""){
         // create modal window
         let theBox = document.createElement('div');
         // style
@@ -67,12 +67,6 @@ function ModalWindow (target, screenColor, w, h, boxColor, border){
         let div = document.createElement('div');
         div.id = "innerBox";
         theBox.appendChild(div);
-
-        // add text
-        let p = document.createElement('p');
-        p.innerHTML = (text).toString();
-        p.style.margin = '1rem';
-        div.appendChild(p);
 
         // append in container
         let container = document.getElementById('container');

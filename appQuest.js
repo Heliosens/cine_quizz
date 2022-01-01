@@ -14,6 +14,9 @@ let score = 0;
 let wrong = [];
 
 // start game
+/**
+ *
+ */
 clap.click(function (event){
     event.preventDefault();
 
@@ -36,16 +39,17 @@ clap.click(function (event){
         else {  // last question
             testAnswer($(this), item);
 
-            let final = new ModalWindow(main.get(0), '', '80%', '80vh', '#fff17680', '1px solid black')
+            let final = new ModalWindow(main.get(0), '', '80%', '80vh', '#fff176', '1px solid black')
             final.screen();
-            final.box("Votre score est de " + score + " points", "Il fallait trouver :");
+            final.box("Votre score est de " + score + " points");
             let innerModal = $('#innerBox');
 
             if(wrong.length > 0){
                 // display right answer
+                innerModal.append("<p>Il fallait trouver :</p>")
                 for(let item of wrong){
-                    innerModal.$('div').append(
-                        '<span><b>"' + item.citation + '"</b> ' + item.title + '</span>'
+                    innerModal.append(
+                        '<span><i>"' + item.citation + '"</i> __ <b>' + item.title + '</b></span>'
                     );
                 }
             }
@@ -105,7 +109,13 @@ function displayQuest (){
  * @param right
  */
 function testAnswer (userAns, right) {
-    userAns.text() === right.title ? score++ : wrong.push(right);
+    if(userAns.text() === right.title){
+        score++;
+    }
+    else {
+        wrong.push(right);
+    }
+    // userAns.text() === right.title ? score++ : wrong.push(right);
 }
 
 /**
