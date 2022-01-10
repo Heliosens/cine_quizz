@@ -101,5 +101,9 @@ let question = [
   {
     "title": "Fight Club",
     "citation": "régle numéro 1, ..."
+  },
+  {
+    "title": "Tais-toi !",
+    "citation" : "Il faudrait construire des asiles de cons mais vous imaginez un peu la taille des bâtiments"
   }
 ]
